@@ -4,7 +4,7 @@
 		<!-- section -->
 		<section>
 
-			<?php get_template_part('loop'); ?>
+			<?php get_template_part('mainpage'); ?>
 
 			<?php get_template_part('pagination'); ?>
 
