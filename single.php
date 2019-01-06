@@ -7,7 +7,7 @@
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
 		<!-- article -->
-		<article class="single-post row" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<article class="single-post" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<div class="row">
 				<div class="col-xl-9 col-12 mx-auto">
 					<!-- post title -->
