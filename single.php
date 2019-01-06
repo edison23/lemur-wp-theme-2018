@@ -37,14 +37,19 @@
 				<div class="col-xl-8 col-l-9 col-12">
 					<?php the_content(); // Dynamic Content ?>
 					<?php edit_post_link(); // Always handy to have Edit Post Links available ?>
-					<?php // comments_template(); ?>
+					<?php $post_post = get_post($post, 'display'); ?>
 				</div>
 				<div class="post-sidebar col-xl-4 col-l-3 col-12 small-txt-90 font-sans">
 					<!-- post details -->
 					<div class="post-meta">
 						<p class="post-author"><?php the_author_posts_link(); ?>, <?php the_time('j. n. Y'); ?> v <?php the_time('G:i'); ?></p>
+						<p>Rubriky: 
+							<?php 
+								$post_cats = list_categories('a', '', apply_filters('the_category', $post_post->post_category), ', '); // Category links separated by commas 
+								echo $post_cats; 
+							?>
+						</p>
 						<p><?php the_tags( 'Štítky: ', ', ', ''); // Separated by commas with nothing at the end (last param) ?></p>
-						<p>Rubriky: <?php the_category(', '); // Separated by commas ?></p>
 					</div>
 					<?php
 						// end of the get post while loop

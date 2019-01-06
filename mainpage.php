@@ -85,23 +85,6 @@
 		$posts = get_articles($query_params);
 		return $posts;
 	}
-
-	//function to create HTML elements from a list of category IDs
-	// expects $el (string, e.g. "div"), $classes (string, e.g. "cat blue") and $cats (array with integer IDs of categories)
-	// excludes category named "Slider" (ID 8) and long term relevant (ID 1715) (as that's something we never want to list to a user)
-	function list_categories($el, $classes, $cats) {
-		$out = '';
-		$i = 0;
-		while ($cats[$i]):
-			$cat_name = get_the_category_by_ID($cats[$i]);
-			if (($cats[$i] != 8) && ($cats[$i] != 1715)){
-				$cat_element = '<' . $el . ' class="' . $classes . '">' . $cat_name . '</' . $el . '>';
-				$out = $out . $cat_element;
-			}
-			$i += 1;
-		endwhile;
-		return $out;
-	}
  
 	// testovaci sekce
 	// $kratas = get_post($kratke[0], 'display');
@@ -124,7 +107,7 @@
 		$post_post = get_post($post, 'display');
 		$post_author = get_user_by('id', apply_filters('the_author', $post_post->post_author))->display_name;
 
-		$post_categories = list_categories('div', 'categories small-txt-75', apply_filters('the_category', $post_post->post_category));
+		$post_categories = list_categories('div', 'categories small-txt-75', apply_filters('the_category', $post_post->post_category), '');
 		$post_date = get_the_date('', $post);
 		$post_excerpt = excerpt_str_by_words(apply_filters('the_excerpt', $post_post->post_excerpt), $excrpt_len);
 		$post_link = get_permalink($post);
@@ -146,7 +129,9 @@
 	function insert_prominent_article($post) {
 		?>
 		<?php $post_meta = retrieve_post_meta($post, 'large', 160) ?>
-		<?php echo $post_meta[categories]; ?>
+		<?php 
+			echo $post_meta[categories]; 
+		?>
 		<div class="thumb">
 			<a href="<?php echo $post_meta[link]; ?>"><img class="rounded post-thumb mx-auto d-block" src="<?php echo $post_meta[thumb]; ?>"></a>
 		</div>
