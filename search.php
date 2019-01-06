@@ -1,18 +1,5 @@
 <?php get_header(); ?>
 
-<?php
-	function excerpt_str_by_words($string, $chars) {
-		if (strlen($string) < $chars) {
-		     return $string;
-		} else {
-		   $short = wordwrap($string, $chars);
-		   $short = explode("\n", $short);
-		   $short = $short[0] . '…';
-		   return $short;
-		};
-	};
-?>
-
 	<main role="main">
 		<!-- section -->
 		<section>

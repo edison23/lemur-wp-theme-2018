@@ -1,14 +1,4 @@
 <?php
-	function excerpt_str_by_words($string, $chars) {
-		if (strlen($string) < $chars) {
-		     return $string;
-		} else {
-		   $short = wordwrap($string, $chars);
-		   $short = explode("\n", $short);
-		   $short = $short[0] . '…';
-		   return $short;
-		};
-	};
 
 while (have_posts()) : the_post(); ?>
 

@@ -90,7 +90,7 @@
 	      }
 	    }
 	  }
-	}
+	};
 
 	//function to create HTML elements from a list of category IDs
 	// expects $el (string, e.g. "div"), $classes (string, e.g. "cat blue") and $cats (array with integer IDs of categories)
@@ -119,5 +119,16 @@
 			$i += 1;
 		endwhile;
 		return $out;
-	}
+	};
+
+	function excerpt_str_by_words($string, $chars) {
+		if (strlen($string) < $chars) {
+		     return $string;
+		} else {
+		   $short = wordwrap($string, $chars);
+		   $short = explode("\n", $short);
+		   $short = $short[0] . '…';
+		   return $short;
+		};
+	};
 ?>

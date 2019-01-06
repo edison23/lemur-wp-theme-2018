@@ -1,15 +1,4 @@
 <?php
-	function excerpt_str_by_words($string, $chars) {
-		if (strlen($string) < $chars) {
-		     return $string;
-		} else {
-		   $short = wordwrap($string, $chars);
-		   $short = explode("\n", $short);
-		   $short = $short[0] . '…';
-		   return $short;
-		};
-	};
-
 	function get_articles($params) {
 		// $params[ 'category_name' ] = $cat_name;
 		$query_result = new WP_Query( $params ); 
