@@ -119,6 +119,10 @@ a:active {
 	outline: 0;
 }
 
+ul {
+	list-style-type: square;
+}
+
 /*input:focus {
 	outline:0;
 	border: 1px solid #003c8f;
@@ -339,6 +343,12 @@ header .site-description {
 	width: 28%;
 }*/
 
+
+/* =========== ARCHIV - VYPIS PO MESICICH =========== */
+
+#archives-list {
+	column-count: 3;
+}
 
 /* =========== SINGLE POST =========== */
 
@@ -586,10 +596,6 @@ a img.aligncenter {
 	h3 {
 		page-break-after:avoid;
 	}
-}
-
-#shit {
-	border: 1px solid #000;
 }
 
 /* =========== VIEWPORT MEDIA QUERIES =========== */

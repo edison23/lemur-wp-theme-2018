@@ -6,7 +6,11 @@
 
 			<?php get_template_part('mainpage'); ?>
 
-			<?php get_template_part('pagination'); ?>
+			<div class="row bg-gray font-sans">
+				<div class="col-lg-8 col-md-7 col-sm-12 text-center">
+					<a class="categories" href="archiv-clanku">Starší články</a>
+				</div>
+			</div>
 
 		</section>
 		<!-- /section -->
