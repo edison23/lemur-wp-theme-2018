@@ -207,6 +207,13 @@ header .site-description {
 	list-style-position: inside; /* if we ever wanted to have the bullets displayed */
 }
 
+.lemur-pagination {
+	font-size: 1.1em;
+	font-weight: 900;
+	padding: 0.4em;
+	text-align: center !important;
+}
+
 
 /* =========== TEXTUAL =========== */
 
