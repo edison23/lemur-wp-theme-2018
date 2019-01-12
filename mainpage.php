@@ -67,7 +67,7 @@
 
 	function get_long_term_relevance_posts() {
 		$query_params = array(
-			'category_name' => 'long-term-relevant',
+			'category_name' => 'dlouhodobe-platne-clanky',
 			'posts_per_page' => 10,
 			'no_found_rows' => true
 		);
