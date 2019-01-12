@@ -8,7 +8,7 @@ while (have_posts()) : the_post(); ?>
 
 			<!-- post thumbnail -->
 			<?php if ( has_post_thumbnail()) : // Check if thumbnail exists ?>
-				<div class="post-thumb float-left">
+				<div class="post-thumb float-left d-none d-md-block">
 					<?php the_post_thumbnail('medium', array('class' => 'rounded')); // Declare pixel size you need inside the array ?>
 				</div>
 			<?php endif; ?>
