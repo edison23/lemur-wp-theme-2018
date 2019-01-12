@@ -16,6 +16,7 @@
 	}; 
 
 	function print_articles_thumb_and_title($articles, $limit) {
+		$limit -= 1; // substracting one to print only the number of files specified and not one more because the array indexing starts at 0 and humans count from 1
 		$i = 0;
 		while (($articles[$i]) && ($i <= $limit)):
 			echo '<div class="clearfix main-pg-cat-post rounded">';
@@ -28,7 +29,7 @@
 
 	// setting up wp_query parametrs for the main page
 	$query_params = array(
-		'posts_per_page' => 30,
+		'posts_per_page' => 150,
 		'no_found_rows' => true
 	);
 
