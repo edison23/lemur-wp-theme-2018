@@ -388,6 +388,10 @@ header .site-description {
 	padding: 0.6em;
 }
 
+.related-posts p {
+	margin: 0.5em 0 0.2em 0;
+}
+
 .post-sidebar div {
 	margin-top: 0;
 	margin-bottom: 1.6em;
@@ -395,7 +399,7 @@ header .site-description {
 
 .post-sidebar h3 {
 	margin-top: 0em;
-	margin-bottom: 0.5em;
+	margin-bottom: 0.4em;
 }
 
 /* =========== REDAKCNI STRANKA =========== */
