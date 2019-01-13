@@ -1,0 +1,19 @@
+{
+	"exclude_cats": 
+	[
+		1967, 1657
+	],
+	"category_slugs":
+	{
+		"dlouhodobe": "dlouhodobe-platne-clanky",
+		"editorial": "editorial",
+		"kratke": "kratke_zpravy",
+		"kultura": "kultura",
+		"nazory": "nazory",
+		"okem": "okem_lemura",
+		"redakce": "redakce",
+		"slider": "slider",
+		"studentsky": "studentsky_zivot",
+		"univerzita": "univerzita"
+	}
+}

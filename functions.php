@@ -486,7 +486,54 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
     return '<h2>' . $content . '</h2>';
 }
 
-// ========== ADMIN SETTINGS PAGE ===========
+// ========== LEMUR FUNCTIONS ===========
 
+function lemur_load_config() {
+    $lemur_cfg_file_contents = file_get_contents("/var/www/lemur/wp-content/themes/wp-theme-lemur-2018/config.json");
+    $lemur_cfg = json_decode($lemur_cfg_file_contents, true);
+    return $lemur_cfg;
+}
+
+//function to create HTML elements from a list of category IDs
+// expects $el (string, e.g. "div"), $classes (string with CSS classes, e.g. "cat blue") and $cats (array with integer IDs of categories)
+// excludes categories listed in config file loaded by lemur_load_config() (currently "Slider" and long-term relevant, as those are categories we never want to list to a user)
+function list_categories($el='', $classes='', $cats='[0]', $delim=', ') {
+    $lemur_config = lemur_load_config(); 
+    $out = '';
+    $i = 0;
+    while ($cats[$i]):
+        $cat_name = get_the_category_by_ID($cats[$i]);
+        $cat_link = get_category_link($cats[$i]);
+        if ( !in_array($cats[$i], $lemur_config['exclude_cats'])){
+            // determine whether the element is a link so we need to generate href attribute
+            if ($el == 'a') {
+                $cat_href_attr = ' href="' . $cat_link . '" ';
+            }
+            else {
+                $cat_href_attr = '';
+            }
+            // when the current category is the last one, replace the delimiter by an empty string so we don't place it after the last category
+            if (!$cats[$i+1]) {
+                $delim = '';
+            }
+            $cat_element = '<' . $el . $cat_href_attr . ' class="' . $classes . '">' . $cat_name . '</' . $el . '>';
+            $out = $out . $cat_element . $delim;
+        }
+        $i += 1;
+    endwhile;
+    return $out;
+};
+
+// truncate a string to a approximate lenght in characters while preserving the whole words
+function excerpt_str_by_words($string, $chars) {
+    if (strlen($string) < $chars) {
+         return $string;
+    } else {
+       $short = wordwrap($string, $chars);
+       $short = explode("\n", $short);
+       $short = $short[0] . '…';
+       return $short;
+    };
+};
 
 ?>
