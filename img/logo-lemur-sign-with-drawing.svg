@@ -5,11 +5,36 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    id="svg12222"
    version="1.1"
    viewBox="0 0 298 142"
    height="142mm"
-   width="298mm">
+   width="298mm"
+   sodipodi:docname="logo-lemur-sign-with-drawing.svg"
+   inkscape:export-filename="/home/edison23/Code/websites/lemur/wp-theme-lemur-2018/img/logo-lemur-sign-with-drawing.png"
+   inkscape:export-xdpi="213.25999"
+   inkscape:export-ydpi="213.25999"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview2308"
+     showgrid="false"
+     inkscape:snap-page="true"
+     inkscape:zoom="1.1401108"
+     inkscape:cx="560.36158"
+     inkscape:cy="198.63901"
+     inkscape:current-layer="svg12222" />
   <defs
      id="defs12216">
     <filter
@@ -29,13 +54,22 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
+  <rect
+     style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+     id="rect2895"
+     width="298"
+     height="142"
+     x="0"
+     y="0" />
   <g
      transform="translate(0,-155)"
-     id="layer1">
+     id="layer1"
+     inkscape:export-xdpi="213.25999"
+     inkscape:export-ydpi="213.25999">
     <g
        style="filter:url(#filter2720)"
        transform="translate(-38.828965,14.032343)"
