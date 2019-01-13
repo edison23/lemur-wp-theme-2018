@@ -266,6 +266,7 @@ header .site-description {
 	text-transform: uppercase;
 	/*background: #aaa;*/
 	display: inline-block;
+	margin-top: 1.5em;
 	margin-right: 0.6em;
 	padding: 0.3em;
 	/*border-radius: 3px;*/
@@ -341,6 +342,11 @@ header .site-description {
 }
 
 #long-time-relevance-and-imprint h3 {
+	margin-top: 1em;
+}
+
+#ltr-posts-all-link {
+	border-top: 1px solid #e0e0e0;
 	margin-top: 1em;
 }
 

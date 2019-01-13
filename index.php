@@ -6,9 +6,9 @@
 
 			<?php get_template_part('mainpage'); ?>
 
-			<div class="row bg-gray font-sans">
-				<div class="col-lg-8 col-md-7 col-sm-12 text-center">
-					<a class="categories" href="archiv-clanku">Starší články</a>
+			<div class="row font-sans">
+				<div class="col-sm-12 text-center">
+					<a class="categories" href="archiv-clanku">Archiv článků</a>
 				</div>
 			</div>
 

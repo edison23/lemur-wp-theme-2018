@@ -26,12 +26,12 @@
 			echo '</div>';
 		endwhile;
 	}
-	
-	function get_long_term_relevance_posts() {
+
+	function get_long_term_relevance_posts($ltr_cat, $limit) {
 		$lemur_config = lemur_load_config();
 		$query_params = array(
-			'category_name' => $lemur_config['category_slugs']['dlouhodobe'] ,
-			'posts_per_page' => 10,
+			'category_name' => $ltr_cat ,
+			'posts_per_page' => $limit,
 			'no_found_rows' => true
 		);
 		$posts = get_articles($query_params);
@@ -212,7 +212,8 @@
 
 <div id="long-time-relevance-and-imprint">
 	<?php
-		$long_term_relevance_posts = get_long_term_relevance_posts();
+		$long_term_relevance_posts = get_long_term_relevance_posts($lemur_config['category_slugs']['dlouhodobe'], 7);
+		$lemur_config = lemur_load_config();
 	?>
 	<div class="row">
 		<div class="col-lg-8 col-md-7 border-top">
@@ -223,6 +224,9 @@
 						$long_term_relevance_posts->the_post(); ?>
 						<h3 class="small-txt-90"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 					<?php endwhile; ?>
+					<div id="ltr-posts-all-link" class="bg-gray text-center small-txt-90 border-top font-sans">
+						<a href="category/<?php echo $lemur_config['category_slugs']['dlouhodobe']; ?>/">Všechny dlouhodobě zajímavé články</a>
+					</div>
 			</div>
 		</div>
 		<div class="col-lg-4 col-md-5 bg-gray font-sans small-txt-90">
