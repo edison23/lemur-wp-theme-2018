@@ -17,5 +17,9 @@ get_header(); ?>
 	</div><!-- #content -->
 </div><!-- #container -->
 
-<?php get_sidebar(); ?>
+<div class="row">
+	<div class="category-sidebar font-sans small-txt-90 text-center mx-auto col-md-6 col-l-4 col-12">
+		<?php get_sidebar(); ?>
+	</div>
+</div>
 <?php get_footer(); ?>
