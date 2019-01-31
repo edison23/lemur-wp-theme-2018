@@ -5,12 +5,29 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <html <?php language_attributes(); ?> class="no-js">
 	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133486467-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-133486467-1');
+		</script>
+
 		<meta charset="<?php bloginfo('charset'); ?>">
 		<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?> – <?php bloginfo( 'description' ); ?></title>
 
 		<link href="//www.google-analytics.com" rel="dns-prefetch">
-        <link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
+        <!-- <link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon-v3.png" rel="shortcut icon"> -->
         <!-- <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed"> -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="theme-color" content="#ffffff">
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
