@@ -22,9 +22,9 @@
 					<!-- /post excerpt -->
 					<!-- post thumbnail -->
 					<?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
-						<div class="post-thumb"><?php the_post_thumbnail('large'); // Fullsize image for the single post ?>
+						<div class="post-thumb font-sans small-txt-90"><?php the_post_thumbnail('large'); // Fullsize image for the single post ?>
 							<?php if (the_post_thumbnail_caption()): ?>
-								<div class="thumb-caption font-sans small-txt-90">
+								<div class="thumb-caption">
 									<?php the_post_thumbnail_caption(); ?>
 								</div>
 							<?php endif; ?>
