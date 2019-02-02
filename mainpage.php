@@ -1,10 +1,12 @@
 <?php
+	// $params - parameters for the WP_Query(), see the function main() for what is passed here in this variable
 	function get_articles($params) {
 		// $params[ 'category_name' ] = $cat_name;
 		$query_result = new WP_Query( $params ); 
 		return $query_result;
 	};
 
+	// this function is used to print articles into the mainpage category columns
 	function print_articles_thumb_and_title($articles, $limit) {
 		$limit -= 1; // substracting one to print only the number of files specified and not one more because the array indexing starts at 0 and humans count from 1
 		$i = 0;
@@ -17,17 +19,17 @@
 		endwhile;
 	}
 
-	function get_long_term_relevance_posts($ltr_cat, $limit) {
-		$lemur_config = lemur_load_config();
-		$query_params = array(
-			'category_name' => $ltr_cat ,
-			'posts_per_page' => $limit,
-			'no_found_rows' => true
-		);
-		$posts = get_articles($query_params);
-		return $posts;
+	// this function is very similar to the print_articles_thumb_and_title(), but prints only the title and is used in the long term relevant posts section.
+	function print_articles_title($articles, $limit) {
+		$limit -= 1; // substracting one to print only the number of files specified and not one more because the array indexing starts at 0 and humans count from 1
+		$i = 0;
+		while (($articles[$i]) && ($i <= $limit)):
+			$post = get_post($articles[$i]);
+			echo '<h3 class="small-txt-90"><a href="' . get_permalink($articles[$i]) . '" >' . apply_filters( 'the_title', $post->post_title ) . '</a></h3>';
+			$i += 1;
+		endwhile;
 	}
-	
+
 	// function to get metadata being displayed in the main page article lists
 	function retrieve_post_meta($post, $thumb_size, $excrpt_len) {
 		// get the post object by its ID we got from the DB by wp_query earlier
@@ -82,8 +84,10 @@
 		$lemur_config = lemur_load_config();
 	
 		// setting up wp_query parametrs for the main page
+		// posts_per_page tells WP_Query how many posts it should get per one page
+		// no_found_rows tells the WP_Query() to quit after one page has been filled (making it basically an execution cap, it would otherwise went thru the whole DB)
 		$query_params = array(
-			'posts_per_page' => 150,
+			'posts_per_page' => 500,
 			'no_found_rows' => true
 		);
 	
@@ -118,7 +122,10 @@
 				$student[] = get_the_ID();
 			elseif (in_category($lemur_config['category_slugs']['kratke'])):
 				$kratke[] = get_the_ID();
-			elseif (in_category($lemur_config['category_slugs']['dlouhodobe'])):
+			endif;
+
+
+			if (in_category($lemur_config['category_slugs']['dlouhodobe'])):
 				$dlouhodobe[] = get_the_ID();
 			endif;
 		endwhile;
@@ -201,6 +208,25 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="long-time-relevance-and-imprint">
+		<div class="row">
+			<div class="col-lg-8 col-md-7 border-top">
+				<h2 class="font-sans">Mohlo by vás zajímat</h2>
+				<div id="ltr-posts">
+					<?php 
+						print_articles_title($dlouhodobe, 7)
+					?>
+					<div id="ltr-posts-all-link" class="bg-gray text-center small-txt-90 border-top font-sans">
+						<a href="category/<?php echo $lemur_config['category_slugs']['dlouhodobe']; ?>/">Všechny dlouhodobě zajímavé články</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-5 bg-gray font-sans small-txt-90">
+				<?php get_sidebar(); ?>
+			</div>
+		</div>
+	</div>
 <?php 
 	// end of the main loop function
 	}
@@ -208,29 +234,6 @@
 	// call the main loop function
 	main();
 ?>
-<div id="long-time-relevance-and-imprint">
-	<?php
-		$long_term_relevance_posts = get_long_term_relevance_posts($lemur_config['category_slugs']['dlouhodobe'], 7);
-		$lemur_config = lemur_load_config();
-	?>
-	<div class="row">
-		<div class="col-lg-8 col-md-7 border-top">
-			<h2 class="font-sans">Mohlo by vás zajímat</h2>
-			<div id="ltr-posts">
-				<?php
-					while ($long_term_relevance_posts->have_posts()):
-						$long_term_relevance_posts->the_post(); ?>
-						<h3 class="small-txt-90"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-					<?php endwhile; ?>
-					<div id="ltr-posts-all-link" class="bg-gray text-center small-txt-90 border-top font-sans">
-						<a href="category/<?php echo $lemur_config['category_slugs']['dlouhodobe']; ?>/">Všechny dlouhodobě zajímavé články</a>
-					</div>
-			</div>
-		</div>
-		<div class="col-lg-4 col-md-5 bg-gray font-sans small-txt-90">
-			<?php get_sidebar(); ?>
-		</div>
-	</div>
-</div>
+
 
 	
