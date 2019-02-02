@@ -77,65 +77,78 @@
 	// ===================================================================== //
 	// beginning of the WP loop that gets articles, sorts them by categories and prints them to the main page
 
-	// loading configuration (from config.json)
-	$lemur_config = lemur_load_config();
-
-	// setting up wp_query parametrs for the main page
-	$query_params = array(
-		'posts_per_page' => 150,
-		'no_found_rows' => true
-	);
-
-	// intialize arrays for storing posts from various categories displayed on main page
-	$kratke = array();
-	$prominent_posts = array();
-	$slider = array();
-	$student = array();
-	$univerzita = array();
-
-	// iterator for limiting number of articles in the prominent posts area below the hero area ("slider")
-	$j = 0; 
-
-	// get the newest posts from the DB according to the parameters from above
-	$main_posts = get_articles($query_params);
-
-	// sort out the posts by category
-	while ($main_posts->have_posts()):
-		$main_posts->the_post();
-
-		// the 1st condition whether to put a post into the prominent category tests for following:
-		// a post must NOT be in 'kratke_zpravy' AND (the slider (hero) must be already full OR the tested post is not supposed to be in the slider, thus would never got there even if we skipped it here and it would go straight to the category columns beneath the prominent area)
-		if (((!in_category($lemur_config['category_slugs']['kratke'])) && (($slider[0] != NULL) || (!in_category($lemur_config['category_slugs']['slider'])))) && ($j < 2)):
-			$prominent_posts[] = get_the_ID();
-			$j += 1;
-		elseif ((in_category($lemur_config['category_slugs']['slider'])) && (!in_category($lemur_config['category_slugs']['kratke'])) && ($slider[0] == NULL)):
-			$slider[] = get_the_ID();
-		elseif ((in_category($lemur_config['category_slugs']['univerzita'])) && (!in_category($lemur_config['category_slugs']['kratke']))):
-			$univerzita[] = get_the_ID();
-		elseif ((in_category($lemur_config['category_slugs']['studentsky'])) && (!in_category($lemur_config['category_slugs']['kratke']))):
-			$student[] = get_the_ID();
-		elseif (in_category($lemur_config['category_slugs']['kratke'])):
-			$kratke[] = get_the_ID();
-		endif;
-	endwhile;
-
-?>
-
-<!-- featured article (legacy name: slider) -->
-<?php
+	function main() {
+		// loading configuration (from config.json)
+		$lemur_config = lemur_load_config();
 	
-?>
-<div id="main-pg-featured-post" class="row border-bottom">
-	<?php $post_meta = retrieve_post_meta($slider[0], 'large', 500); ?>
-	<div class="thumb col-md-5">
-		<a href="<?php echo $post_meta[link]; ?>"><img class="rounded post-thumb" src="<?php echo $post_meta[thumb]; ?>"></a>
-	</div>
-	<div class="col-md-7">
-		<div class="post-head col-12">
-			<?php echo $post_meta[categories]; ?>
-			<h2 id="featured-post-title" class="txt-lemur"><a href="<?php echo $post_meta[link]; ?>"><?php echo $post_meta[title]; ?></a></h2>
+		// setting up wp_query parametrs for the main page
+		$query_params = array(
+			'posts_per_page' => 150,
+			'no_found_rows' => true
+		);
+	
+		// intialize arrays for storing posts from various categories displayed on main page
+		$dlouhodobe = array();
+		$kratke = array();
+		$prominent_posts = array();
+		$slider = array();
+		$student = array();
+		$univerzita = array();
+	
+		// iterator for limiting number of articles in the prominent posts area below the hero area ("slider")
+		$j = 0; 
+	
+		// get the newest posts from the DB according to the parameters from above
+		$main_posts = get_articles($query_params);
+	
+		// sort out the posts by category
+		while ($main_posts->have_posts()):
+			$main_posts->the_post();
+	
+			// the 1st condition whether to put a post into the prominent category tests for following:
+			// a post must NOT be in 'kratke_zpravy' AND (the slider (hero) must be already full OR the tested post is not supposed to be in the slider, thus would never got there even if we skipped it here and it would go straight to the category columns beneath the prominent area)
+			if (((!in_category($lemur_config['category_slugs']['kratke'])) && (($slider[0] != NULL) || (!in_category($lemur_config['category_slugs']['slider'])))) && ($j < 2)):
+				$prominent_posts[] = get_the_ID();
+				$j += 1;
+			elseif ((in_category($lemur_config['category_slugs']['slider'])) && (!in_category($lemur_config['category_slugs']['kratke'])) && ($slider[0] == NULL)):
+				$slider[] = get_the_ID();
+			elseif ((in_category($lemur_config['category_slugs']['univerzita'])) && (!in_category($lemur_config['category_slugs']['kratke']))):
+				$univerzita[] = get_the_ID();
+			elseif ((in_category($lemur_config['category_slugs']['studentsky'])) && (!in_category($lemur_config['category_slugs']['kratke']))):
+				$student[] = get_the_ID();
+			elseif (in_category($lemur_config['category_slugs']['kratke'])):
+				$kratke[] = get_the_ID();
+			elseif (in_category($lemur_config['category_slugs']['dlouhodobe'])):
+				$dlouhodobe[] = get_the_ID();
+			endif;
+		endwhile;
+
+	?>
+
+	<!-- featured article (legacy name: slider) -->
+
+	<div id="main-pg-featured-post" class="row border-bottom">
+		<?php $post_meta = retrieve_post_meta($slider[0], 'large', 500); ?>
+		<div class="thumb col-md-5">
+			<a href="<?php echo $post_meta[link]; ?>"><img class="rounded post-thumb" src="<?php echo $post_meta[thumb]; ?>"></a>
 		</div>
-		<div class="post-meta-n-excerpt d-none d-lg-block">
+		<div class="col-md-7">
+			<div class="post-head col-12">
+				<?php echo $post_meta[categories]; ?>
+				<h2 id="featured-post-title" class="txt-lemur"><a href="<?php echo $post_meta[link]; ?>"><?php echo $post_meta[title]; ?></a></h2>
+			</div>
+			<div class="post-meta-n-excerpt d-none d-lg-block">
+				<div class="credits small-txt-75 font-sans">
+					<span class="date"><?php echo $post_meta[date]; ?></span>
+					 <!-- | <span class="author"><?php // echo $post_meta[author]; ?></span> -->
+					 | <span class="author"><?php echo $post_meta[author]; ?></span>
+				</div>
+				<div class="excerpt">
+					<p><?php echo $post_meta[excerpt]; ?></p>
+				</div>
+			</div>
+		</div>
+		<div class="post-meta-n-excerpt d-block d-lg-none col-12">
 			<div class="credits small-txt-75 font-sans">
 				<span class="date"><?php echo $post_meta[date]; ?></span>
 				 <!-- | <span class="author"><?php // echo $post_meta[author]; ?></span> -->
@@ -146,60 +159,55 @@
 			</div>
 		</div>
 	</div>
-	<div class="post-meta-n-excerpt d-block d-lg-none col-12">
-		<div class="credits small-txt-75 font-sans">
-			<span class="date"><?php echo $post_meta[date]; ?></span>
-			 <!-- | <span class="author"><?php // echo $post_meta[author]; ?></span> -->
-			 | <span class="author"><?php echo $post_meta[author]; ?></span>
-		</div>
-		<div class="excerpt">
-			<p><?php echo $post_meta[excerpt]; ?></p>
-		</div>
-	</div>
-</div>
 
-<div id="main-pg-prominent-articles">
-	<div class="row justify-content-md-center">
-		<div class="col-md-5 post-card">
-			<?php insert_prominent_article($prominent_posts[0]); ?>
-		</div>
-		<div class="col-md-5 post-card">
-			<?php insert_prominent_article($prominent_posts[1]); ?>
-		</div>
-	</div>
-</div>
-
-<div id="main-pg-categories" class="border-top">
-	<h2 class="font-sans text-center">Možná jste ještě nečetli</h2>
-
-	<div class="row">
-		<div class="col-md-4">
-			<div class="main-pg-category">
-				<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Univerzita</h2>
-				<?php
-					print_articles_thumb_and_title($univerzita, 5)
-				?>
+	<div id="main-pg-prominent-articles">
+		<div class="row justify-content-md-center">
+			<div class="col-md-5 post-card">
+				<?php insert_prominent_article($prominent_posts[0]); ?>
 			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="main-pg-category">
-				<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Studentský život</h2>
-				<?php
-					print_articles_thumb_and_title($student, 5)
-				?>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="main-pg-category">
-				<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Krátké zprávy</h2>
-				<?php
-					print_articles_thumb_and_title($kratke, 5)
-				?>
+			<div class="col-md-5 post-card">
+				<?php insert_prominent_article($prominent_posts[1]); ?>
 			</div>
 		</div>
 	</div>
-</div>
 
+	<div id="main-pg-categories" class="border-top">
+		<h2 class="font-sans text-center">Možná jste ještě nečetli</h2>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="main-pg-category">
+					<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Univerzita</h2>
+					<?php
+						print_articles_thumb_and_title($univerzita, 5)
+					?>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="main-pg-category">
+					<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Studentský život</h2>
+					<?php
+						print_articles_thumb_and_title($student, 5)
+					?>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="main-pg-category">
+					<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Krátké zprávy</h2>
+					<?php
+						print_articles_thumb_and_title($kratke, 5)
+					?>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php 
+	// end of the main loop function
+	}
+
+	// call the main loop function
+	main();
+?>
 <div id="long-time-relevance-and-imprint">
 	<?php
 		$long_term_relevance_posts = get_long_term_relevance_posts($lemur_config['category_slugs']['dlouhodobe'], 7);
