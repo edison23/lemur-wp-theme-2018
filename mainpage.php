@@ -57,7 +57,8 @@
 
 	// function to insert a post beneath the main "slider" post (currently two posts, each in a separate box)
 	function insert_prominent_article($post) {
-		$post_meta = retrieve_post_meta($post, 'large', 500);
+		$lemur_config = lemur_load_config();
+		$post_meta = retrieve_post_meta($post, 'large', $lemur_config['limits']['excerptLen'] );
 		echo $post_meta[categories]; 
 	?>
 		<div class="thumb">
@@ -87,7 +88,7 @@
 		// posts_per_page tells WP_Query how many posts it should get per one page
 		// no_found_rows tells the WP_Query() to quit after one page has been filled (making it basically an execution cap, it would otherwise went thru the whole DB)
 		$query_params = array(
-			'posts_per_page' => 500,
+			'posts_per_page' => $lemur_config['limits']['mainDBquery'],
 			'no_found_rows' => true
 		);
 	
@@ -111,7 +112,7 @@
 	
 			// the 1st condition whether to put a post into the prominent category tests for following:
 			// a post must NOT be in 'kratke_zpravy' AND (the slider (hero) must be already full OR the tested post is not supposed to be in the slider, thus would never got there even if we skipped it here and it would go straight to the category columns beneath the prominent area)
-			if (((!in_category($lemur_config['category_slugs']['kratke'])) && (($slider[0] != NULL) || (!in_category($lemur_config['category_slugs']['slider'])))) && ($j < 2)):
+			if (((!in_category($lemur_config['category_slugs']['kratke'])) && (($slider[0] != NULL) || (!in_category($lemur_config['category_slugs']['slider'])))) && ($j < $lemur_config['limits']['prominent'])):
 				$prominent_posts[] = get_the_ID();
 				$j += 1;
 			elseif ((in_category($lemur_config['category_slugs']['slider'])) && (!in_category($lemur_config['category_slugs']['kratke'])) && ($slider[0] == NULL)):
@@ -135,7 +136,7 @@
 	<!-- featured article (legacy name: slider) -->
 
 	<div id="main-pg-featured-post" class="row border-bottom">
-		<?php $post_meta = retrieve_post_meta($slider[0], 'large', 500); ?>
+		<?php $post_meta = retrieve_post_meta($slider[0], 'large', $lemur_config['limits']['excerptLen'] ); ?>
 		<div class="thumb col-md-5">
 			<a href="<?php echo $post_meta[link]; ?>"><img class="rounded post-thumb" src="<?php echo $post_meta[thumb]; ?>"></a>
 		</div>
@@ -186,7 +187,7 @@
 				<div class="main-pg-category">
 					<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Univerzita</h2>
 					<?php
-						print_articles_thumb_and_title($univerzita, 5)
+						print_articles_thumb_and_title($univerzita, $lemur_config['limits']['univerzita'])
 					?>
 				</div>
 			</div>
@@ -194,7 +195,7 @@
 				<div class="main-pg-category">
 					<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Studentský život</h2>
 					<?php
-						print_articles_thumb_and_title($student, 5)
+						print_articles_thumb_and_title($student, $lemur_config['limits']['studentsky'])
 					?>
 				</div>
 			</div>
@@ -202,7 +203,7 @@
 				<div class="main-pg-category">
 					<h2 class="main-pg-category-title border-bottom font-sans small-txt-90">Krátké zprávy</h2>
 					<?php
-						print_articles_thumb_and_title($kratke, 5)
+						print_articles_thumb_and_title($kratke, $lemur_config['limits']['kratke'])
 					?>
 				</div>
 			</div>

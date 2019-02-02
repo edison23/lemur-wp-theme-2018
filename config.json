@@ -15,5 +15,15 @@
 		"slider": "slider",
 		"studentsky": "studentsky_zivot",
 		"univerzita": "univerzita"
+	},
+	"limits":
+	{
+		"mainDBquery": 500,
+		"excerptLen": 500,
+		"dlouhodobe": 7,
+		"kratke": 5,
+		"prominent": 2,
+		"studentsky": 5,
+		"univerzita": 5
 	}
 }
