@@ -5,16 +5,6 @@
 		return $query_result;
 	};
 
-	function print_articles_titles($params, $cat_name) {
-		$query_result = get_articles($params, $cat_name); 
-		while ($query_result->have_posts()) : 
-			$query_result->the_post(); 
-			$displayed_article_ids[] = get_the_ID();
-			?>
-			<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-		<?php endwhile;
-	}; 
-
 	function print_articles_thumb_and_title($articles, $limit) {
 		$limit -= 1; // substracting one to print only the number of files specified and not one more because the array indexing starts at 0 and humans count from 1
 		$i = 0;
