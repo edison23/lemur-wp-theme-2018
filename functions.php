@@ -17,7 +17,7 @@
 
 if (!isset($content_width))
 {
-    $content_width = 900;
+    $content_width = 1000; /* this doesn't appear to have any effect on how the new uploads are resized */
 }
 
 if (function_exists('add_theme_support'))
@@ -27,10 +27,10 @@ if (function_exists('add_theme_support'))
 
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
-    add_image_size('large', 700, '', true); // Large Thumbnail
+    add_image_size('large', 1400, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
-    add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('custom-size', 1500, '', true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size'); -- not used currently to my knowledge
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(
