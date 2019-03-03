@@ -4,6 +4,8 @@ WordPress theme for Lemur (Masaryk university students news portal)
 
 The documentation below is currently available only in Czech (given the purpose of this theme it makes more sense).
 
+![Lemur logo](https://www.lemurmu.cz/wp-content/uploads/2019/03/logo-lemur01-wide-1400x1146.png)
+
 # Dokumentace
 
 Šablona Lemur WP Theme 2018 je postavena na základní šabloně HTML5 Blank Starter WordPress Theme, kterou používá jako boilerplate. Dále pracuje s vestavěnými funkcemi WordPressu.
