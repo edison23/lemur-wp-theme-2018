@@ -378,6 +378,10 @@ header .site-description {
 	height: auto;
 }
 
+.single-post > .row > .col-xl-8 a {
+	text-decoration: underline;
+}
+
 .intQuestion {
 	display: block;
 	font-weight: 700;
