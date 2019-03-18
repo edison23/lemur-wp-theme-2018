@@ -67,13 +67,13 @@
 								<!-- <img scr="http://lemur.kmurtinger.cz/subdom/lemur/wp-content/themes/wp-theme-lemur-2018/img/logo-lemur-sign-with-drawing.svg" alt="Logo" class="logo-img"> -->
 								<h1 id="site-name"><?php echo $site_title; ?></h1>
 
-								<h2 class="site-description"><?php echo $site_description; ?></h2>
+								<h2 class="site-description donthyphenate"><?php echo $site_description; ?></h2>
 							</a>
 						</div>
 						<!-- /logo -->
 
 						<!-- nav -->
-						<nav class="nav bg-colorful small-txt-90 rounded" role="navigation">
+						<nav class="nav bg-colorful small-txt-90 rounded donthyphenate" role="navigation">
 							<div id="categories_nav" class="float-lg-left">
 								<?php lemurcategories_nav(); ?>
 							</div>
