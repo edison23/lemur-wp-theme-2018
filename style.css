@@ -19,7 +19,7 @@
 /* =========== MAIN =========== */
 
 html {
-	font-size: 17pt;
+	font-size: 16pt;
 	line-height: 1.5;
 }
 
@@ -142,7 +142,7 @@ header {
 }
 
 #site-logo {
-	height: 7.5em;
+	height: 8.5em;
 	margin: 1em 0 -0.7em 0;
 }
 
@@ -670,15 +670,21 @@ blockquote::before {
   }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1700px) {
     html {
 		font-size: 14pt;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    html {
+		font-size: 12pt;
     }
 }
 
 
 @media only screen and (max-width: 1025px) {
     html {
-		font-size: 12pt;
+		font-size: 11.5pt;
     }
 }
