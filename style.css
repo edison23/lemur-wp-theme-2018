@@ -385,6 +385,7 @@ header .site-description {
 .intQuestion {
 	display: block;
 	font-weight: 700;
+	margin: 1em 0 0.2em 0;
 	/*color: #000080;*/
 }
 
@@ -399,6 +400,22 @@ h6[class="intPersonResume"] {
 	font-size: 1.2em;
 	margin-bottom: 1em;
 	text-align: center;
+}
+
+.intPersonResume>.name {
+	border-top: 0.6em solid #e0e0e0;
+	margin-top: 2em;
+}
+
+.intPersonResume>.name {
+	padding-top: 0.3em;
+	font-size: 1.2em;
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.intPersonResume>.description {
+	padding: 0 4em 0 4em;
 }
 
 .post-sidebar .related-posts,
@@ -565,6 +582,14 @@ a img.aligncenter {
 	padding: 0.3em;
 }
 
+.wp-block-image figcaption {
+	font-size: 0.8em;
+	background: #e0e0e0;
+	color: inherit;
+	padding: 0.5em;
+	margin: 0 0 1em 0;
+}
+
 .wp-caption.alignnone {
 }
 
@@ -608,6 +633,12 @@ blockquote::before {
 	float: left;
 	position: relative;
 	bottom: 0.3em;
+}
+
+blockquote>cite {
+	font-style: inherit;
+	color: #666666;
+	font-size: 0.7em;
 }
 
 /* =========== PRINT =========== */
