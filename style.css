@@ -584,10 +584,11 @@ a img.aligncenter {
 
 .wp-block-image figcaption {
 	font-size: 0.8em;
-	background: #e0e0e0;
+	/*background: #e0e0e0;*/
 	color: inherit;
 	padding: 0.5em;
 	margin: 0 0 1em 0;
+	border-bottom: 0.3em solid #e0e0e0;
 }
 
 .wp-caption.alignnone {
