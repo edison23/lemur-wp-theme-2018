@@ -62,7 +62,7 @@
 						<div class="logo">
 							<a href="<?php echo home_url(); ?>">
 								<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-								<img id="site-logo" src="<?php echo get_template_directory_uri(); ?>/img/logo-lemur-sign-with-drawing.png" alt="site logo">
+								<img id="site-logo" src="<?php echo get_template_directory_uri(); ?>/img/lemur-logo-2019-08.plain.svg" alt="site logo">
 								<!-- <img scr="<?php echo get_template_directory_uri(); ?>/img/logo-lemur-sign-with-drawing.svg)" alt="Logo" class="logo-img"> -->
 								<!-- <img scr="http://lemur.kmurtinger.cz/subdom/lemur/wp-content/themes/wp-theme-lemur-2018/img/logo-lemur-sign-with-drawing.svg" alt="Logo" class="logo-img"> -->
 								<h1 id="site-name"><?php echo $site_title; ?></h1>
