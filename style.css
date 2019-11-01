@@ -105,9 +105,9 @@ a {
 	text-decoration: none;
 }
 
-a, 
-a:link, 
-a:active, 
+a,
+a:link,
+a:active,
 a:hover {
 	color: #000080;
 }
@@ -221,7 +221,7 @@ header .site-description {
 /* TODO dodelat na tohle universalni klasu */
 /*.main-pg-category:nth-child(odd) {
 	background: #eeeeee;
-	
+
 }*/
 
 .post-card {
@@ -708,15 +708,23 @@ blockquote>cite {
     }
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1200px) {
     html {
 		font-size: 12pt;
     }
 }
 
 
-@media only screen and (max-width: 1025px) {
+@media only screen and (max-width: 992px) {
     html {
 		font-size: 11.5pt;
     }
+
+		div[class="intPersonResume"] {
+			padding: 0;
+		}
+
+		.intPersonResume>.description {
+			padding: 0 2em 0 2em;
+		}
 }
