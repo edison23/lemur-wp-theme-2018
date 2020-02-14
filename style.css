@@ -215,9 +215,9 @@ header .site-description {
 
 .lemur-pagination {
 	font-size: 1.1em;
-	font-weight: 700;
 	padding: 0.4em;
 	text-align: center !important;
+	font-family: 'Roboto', sans-serif;
 }
 
 
