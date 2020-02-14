@@ -1,5 +1,5 @@
 {
-	"exclude_cats": 
+	"exclude_cats":
 	[
 		1967, 1657
 	],
@@ -19,7 +19,7 @@
 	"limits":
 	{
 		"mainDBquery": 500,
-		"excerptLen": 500,
+		"excerptLen": 400,
 		"dlouhodobe": 7,
 		"kratke": 5,
 		"prominent": 2,
