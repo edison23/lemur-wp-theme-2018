@@ -1,7 +1,7 @@
 /*
 	Theme Name: Lemur WP Theme 2018
 	Theme URI: https://github.com/edison23/lemur-wp-theme-2018
-	Description: Lemur WP Theme 2018 originally created by edison23. Uses Bootstrap, fonts Roboto Slab and Roboto. Theme based on <a href="https://html5blank.com">HTML5 Blank</a>
+	Description: Lemur WP Theme 2018 originally created by edison23. Uses Bootstrap, fonts Martel and Roboto loaded from Google Fonts. Theme based on <a href="https://html5blank.com">HTML5 Blank</a>
 	Version: 0.9
 	Author: Dave Klement (@edison23net), Todd Motto (@toddmotto)
 	Author URI: http://edison23.net
@@ -12,19 +12,21 @@
 */
 
 /* === FONT IMPORT === */
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,700&subset=cyrillic,cyrillic-ext,latin-ext');
+ @import url('https://fonts.googleapis.com/css?family=Martel:300,700&display=swap&subset=latin-ext');
+/*@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:300,700&subset=cyrillic,cyrillic-ext,latin-ext');*/
 /*@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif:400,400i,600,600i&subset=latin-ext');*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,900');
 
 /* =========== MAIN =========== */
 
 html {
-	font-size: 16pt;
+	font-size: 14.4pt;
 	line-height: 1.5;
 }
 
 body {
-	font-family: 'Roboto Slab', serif;
+	font-family: 'Martel', serif;
+	/*font-family: 'Roboto Slab', serif;*/
 	/*font-family: 'IBM Plex Serif', serif;*/
 }
 
@@ -73,32 +75,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-	font-size: 2.4em;
-	font-weight: 700;
+	font-size: 2.2em;
 }
 
 h2 {
-	font-size: 1.5em;
+	font-size: 1.65em;
 }
 
 h3 {
-	font-size: 1.35em;
-	font-weight: 700;
+	font-size: 1.4em;
 }
 
 h4 {
-	font-size: 1.2em;
-	font-weight: 700;
+	font-size: 1.28em;
 }
 
 h5 {
-	font-size: 1.1em;
-	font-weight: 700;
+	font-size: 1.2em;
 }
 
 h6 {
-	font-size: 1.05em;
-	font-weight: 700;
+	font-size: 1.1em;
+}
+
+code {
+	font-size: 100%;
+}
+
+p {
+	font-size: 92%;
 }
 
 a {
@@ -226,7 +231,9 @@ header .site-description {
 
 .post-card {
 	/*border-radius: 3px;*/
-	box-shadow: 0px 0px 5px #bbb;
+	box-shadow: 0px 0px 20px #bbb;
+	/*border-left: 1px solid #dee2e6;*/
+	/*border-right: 1px solid #dee2e6;*/
 }
 
 .main-pg-category h2 {
@@ -262,7 +269,7 @@ header .site-description {
 }
 
 .categories {
-	/*font-family: 'Roboto', sans-serif;*/
+	font-family: 'Roboto', sans-serif;
 	font-weight: 700;
 	text-transform: uppercase;
 	/*background: #aaa;*/
@@ -370,12 +377,16 @@ header .site-description {
 
 .single-post .post-thumb {
 	margin: 0 0 1.8em 0;
+	width: 100%;
+	max-height: 800px;
+	overflow: hidden;
 }
 
 .single-post .post-thumb img {
-	margin: 0 0 0.5em 0;
+	margin: 0 auto;
 	width: 100%;
-	height: auto;
+	/*max-height: 100%;*/
+	display: block;
 }
 
 .single-post > .row > .col-xl-8 a {
@@ -547,32 +558,48 @@ h6[class="intPersonResume"] {
 .alignnone {
 	margin:5px 20px 20px 0;
 }
+
 .aligncenter,
 div.aligncenter {
-	display:block;
-	margin:5px auto 5px auto;
+	display: block;
+	margin: 5px auto 5px auto;
 }
+
 .alignright {
-	float:right;
-	margin:5px 0 20px 20px;
+	float: right;
+	margin: 5px 0 20px 20px;
 }
+
 .alignleft {
-	float:left;
-	margin:5px 20px 20px 0;
+	float: left;
+	margin: 5px 20px 20px 0;
 }
+
+.alignleft, .alignright {
+	width: 40%;
+}
+
+.alignleft img, .alignright img {
+	width: 100%;
+	height: auto;
+}
+
 a img.alignright {
-	float:right;
-	margin:5px 0 20px 20px;
+	float: right;
+	margin: 5px 0 20px 20px;
 }
+
 a img.alignnone {
-	margin:5px 20px 20px 0;
+	margin: 5px 20px 20px 0;
 }
+
 a img.alignleft {
-	float:left;
-	margin:5px 20px 20px 0;
+	float: left;
+	margin: 5px 20px 20px 0;
 }
+
 a img.aligncenter {
-	display:block;
+	display: block;
 	margin-left:auto;
 	margin-right:auto;
 }
@@ -584,6 +611,7 @@ a img.aligncenter {
 
 .wp-block-image figcaption {
 	font-size: 0.8em;
+	font-family: 'Roboto', sans-serif;
 	/*background: #e0e0e0;*/
 	color: inherit;
 	padding: 0.5em;
@@ -616,24 +644,24 @@ a img.aligncenter {
 
 }
 
-blockquote {
-	font-size: 1.3em;
-	width: 40%;
-	float: right;
-	border-left: 0.2em solid #e0e0e0;
-	padding-left: 0.5em;
-	margin-left: 1em;
-}
-
 blockquote::before {
 	content: "„";
 	font-size: 3em;
-	font-family: serif;
 	line-height: 0.6;
 	margin-right: 0.2em;
 	float: left;
 	position: relative;
 	bottom: 0.3em;
+}
+
+blockquote {
+	font-size: 1.3em;
+	font-family: 'Martel' serif;
+	width: 40%;
+	float: right;
+	border-left: 0.2em solid #e0e0e0;
+	padding-left: 0.5em;
+	margin-left: 1em;
 }
 
 blockquote>cite {
@@ -704,27 +732,35 @@ blockquote>cite {
 
 @media only screen and (max-width: 1700px) {
     html {
-		font-size: 14pt;
+		font-size: 12.7pt;
     }
 }
 
 @media only screen and (max-width: 1200px) {
     html {
-		font-size: 12pt;
+		font-size: 11pt;
+    }
+
+    p {
+    	font-size: 98%;
     }
 }
 
 
 @media only screen and (max-width: 992px) {
     html {
-		font-size: 11.5pt;
+		font-size: 10.7pt;
     }
 
-		div[class="intPersonResume"] {
-			padding: 0;
-		}
+    p {
+		font-size: 100%;
+	}
 
-		.intPersonResume>.description {
-			padding: 0 2em 0 2em;
-		}
+	div[class="intPersonResume"] {
+		padding: 0;
+	}
+
+	.intPersonResume>.description {
+		padding: 0 2em 0 2em;
+	}
 }
