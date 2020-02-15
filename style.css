@@ -664,6 +664,10 @@ blockquote {
 	margin-left: 1em;
 }
 
+blockquote>p {
+	text-align: left;
+}
+
 blockquote>cite {
 	font-style: inherit;
 	color: #666666;
