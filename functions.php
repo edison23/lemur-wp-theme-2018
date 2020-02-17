@@ -499,12 +499,29 @@ function lemur_load_config() {
 // excludes categories listed in config file loaded by lemur_load_config() (currently "Slider" and long-term relevant, as those are categories we never want to list to a user)
 function list_categories($el='', $classes='', $cats='[0]', $delim=', ') {
     $lemur_config = lemur_load_config(); 
+
+    // remove blacklisted categories from the array (if we don't, it leads to https://github.com/edison23/lemur-wp-theme-2018/issues/27 : to avoid printing comma after the last category, we check it there's $i+1 element in the array. If the next one is blacklisted tho, it passes the comma condition but doesn't get printed, hence comma at the end of the list.)
+    $clean_cats = array();
+    $i = 0;
+    $j = 0;
+    while ($cats[$i]):
+        if (!in_array($cats[$i], $lemur_config['exclude_cats'])) {
+            // we need to assign the whitelisted categories into a new array because simple unset() on the original array doesn't work as expected
+            $clean_cats[$j] = $cats[$i];
+            $j += 1;
+        }
+        $i += 1;
+    endwhile;
+
     $out = '';
     $i = 0;
-    while ($cats[$i]):
-        $cat_name = get_the_category_by_ID($cats[$i]);
-        $cat_link = get_category_link($cats[$i]);
-        if ( !in_array($cats[$i], $lemur_config['exclude_cats'])){
+    while ($clean_cats[$i]):
+        $cat_name = get_the_category_by_ID($clean_cats[$i]);
+        $cat_link = get_category_link($clean_cats[$i]);
+
+        // check whether the current category is not in the blacklist
+        // if ( !in_array($clean_cats[$i], $lemur_config['exclude_clean_cats'])){
+
             // determine whether the element is a link so we need to generate href attribute
             if ($el == 'a') {
                 $cat_href_attr = ' href="' . $cat_link . '" ';
@@ -512,13 +529,14 @@ function list_categories($el='', $classes='', $cats='[0]', $delim=', ') {
             else {
                 $cat_href_attr = '';
             }
+
             // when the current category is the last one, replace the delimiter by an empty string so we don't place it after the last category
-            if (!$cats[$i+1]) {
+            if (!$clean_cats[$i+1]) {
                 $delim = '';
             }
             $cat_element = '<' . $el . $cat_href_attr . ' class="' . $classes . '">' . $cat_name . '</' . $el . '>';
             $out = $out . $cat_element . $delim;
-        }
+        // }
         $i += 1;
     endwhile;
     return $out;
