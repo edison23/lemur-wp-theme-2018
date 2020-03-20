@@ -39,6 +39,8 @@
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 		<meta name="theme-color" content="#ffffff">
 
+		<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/style.css?version=6" />
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
@@ -86,6 +88,13 @@
 						<nav class="nav bg-colorful small-txt-90 rounded donthyphenate" role="navigation">
 							<div id="categories_nav" class="float-lg-left">
 								<?php lemurcategories_nav(); ?>
+							</div>
+							<!-- the right block items are stacking from the right so the right-most must be 1st (same goes for the contents of the block) -->
+							<div id="sociaal-icons" class="float-lg-right">
+								<!-- The icons are not named e.g. "facebook.svg" because uBlock Origin blocks them by default for some reason if there's a full soc. site name. -->
+								<a target="_blank" href="https://twitter.com/lemur_mu"><img class="soc-icon" src="<?php echo get_template_directory_uri(); ?>/img/icons/logo-tw.svg"></a>
+								<a target="_blank" href="https://www.instagram.com/lemur_mu"><img class="soc-icon" src="<?php echo get_template_directory_uri(); ?>/img/icons/logo-inst.svg"></a>
+								<a target="_blank" href="https://www.facebook.com/LeMUr.mu"><img class="soc-icon" src="<?php echo get_template_directory_uri(); ?>/img/icons/logo-fb.svg"></a>
 							</div>
 							<div id="pages_nav" class="float-lg-right">
 								<?php lemurpages_nav(); ?>

@@ -188,10 +188,25 @@ header .site-description {
 
 #pages_nav li {
 	border-left: 1px solid #000080;
+	position: relative;
 }
 
 #categories_nav li:last-of-type, #pages_nav li:first-of-type {
 	border: none;
+}
+
+/* for some reason, soc-icons and social-icons get hidden on front-end.
+	I'm too lazy to investigate, hence this demented name. */
+#sociaal-icons {
+	padding-left: 0.65em;
+	border-left: 1px solid #000080;
+}
+
+.soc-icon {
+	display: block;
+	float: right;
+	width: 1.5em;
+	margin: 0.3em 0.65em 0.3em 0.65em;
 }
 
 /* sidebar */
