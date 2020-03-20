@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Historie Lemura 
+Template Name: Historie Lemura
 */
 get_header(); ?>
 
